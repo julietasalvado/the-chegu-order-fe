@@ -36,7 +36,7 @@ class HomePage extends React.Component {
   }
 
   onClickSave() {
-    this.props.dispatch(buyerActions.addBuyer(this.state.user));
+    this.props.addBuyer(this.state.user);
   }
 
   buyerRow(user, index) {
@@ -65,8 +65,8 @@ class HomePage extends React.Component {
 
 //validations
 HomePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  users: PropTypes.array.isRequired
+  users: PropTypes.array.isRequired,
+  addBuyer: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -77,7 +77,15 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps/*, mapDispatchToProps*/)(HomePage);
+//wraps an action in a call of dispatch so it-s easy to use
+function mapDispatchToProps(dispatch) {
+  //what actions are available in our components
+  return {
+    addBuyer: (user) => dispatch(buyerActions.addBuyer(user))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 //exporting a component decorated with react-redux connect function
 //two function call: the result of connect is a function that will call the container component
 //it the same that ->
