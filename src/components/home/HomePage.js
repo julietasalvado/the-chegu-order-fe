@@ -56,7 +56,7 @@ class HomePage extends React.Component {
           value={this.state.user.username} />
         <input
           type="submit"
-          onChange={this.onClickSave}
+          onClick={this.onClickSave}
           value="Save" />
       </div>
     );
