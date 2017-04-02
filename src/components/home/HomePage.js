@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as buyerActions from '../../actions/buyerActions';
-// import {Link} from 'react-router';
+import {bindActionCreators} from 'redux';
 
 // class HomePage extends React.Component {
 //   render() {
@@ -36,7 +36,7 @@ class HomePage extends React.Component {
   }
 
   onClickSave() {
-    this.props.addBuyer(this.state.user);
+    this.props.actions.addBuyer(this.state.user);
   }
 
   buyerRow(user, index) {
@@ -65,7 +65,7 @@ class HomePage extends React.Component {
 //validations
 HomePage.propTypes = {
   users: PropTypes.array.isRequired,
-  addBuyer: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -79,7 +79,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   //what actions are available in our components
   return {
-    addBuyer: (user) => dispatch(buyerActions.addBuyer(user))
+    actions: bindActionCreators(buyerActions, dispatch)
   };
 }
 
