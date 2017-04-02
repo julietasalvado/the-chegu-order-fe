@@ -44,7 +44,6 @@ class HomePage extends React.Component {
   }
 
   render() {
-    debugger;
     return (
       <div className="jumbotron">
         <h1>The Chegu Order</h1>
@@ -71,7 +70,6 @@ HomePage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   /*what I want to expose from the component?*/
-  debugger;
   return {
     users: state.buyers /*the reducer*/
   };

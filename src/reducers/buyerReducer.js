@@ -2,7 +2,6 @@ export default function buyerReducer(state = [] /*it starts without buyers*/, ac
 
   switch(action.type) {
     case 'ADD_BUYER':
-      debugger;
       return [...state /*it spread state content*/,
         Object.assign({}, action.user) /*it combines empty with the user in a new obj*/
       ];
