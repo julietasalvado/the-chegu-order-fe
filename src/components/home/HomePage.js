@@ -17,6 +17,7 @@ import {bindActionCreators} from 'redux';
 
 class HomePage extends React.Component {
 
+  //--------initialize state and bind functions--------
   constructor(props, context) {
     super(props, context);
 
@@ -29,6 +30,7 @@ class HomePage extends React.Component {
     this.onClickSave = this.onClickSave.bind(this);
   }
 
+  //--------child functions that are called by 'render'--------
   onUsernameChange(event) {
     const user = this.state.user;
     user.username = event.target.value;
@@ -43,6 +45,7 @@ class HomePage extends React.Component {
     return <div key={index}>{user.username}</div>;
   }
 
+  //it should call a child component instead of containing the markup
   render() {
     return (
       <div className="jumbotron">
@@ -68,6 +71,7 @@ HomePage.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
+//------redux connect and related functions--------
 function mapStateToProps(state, ownProps) {
   /*what I want to expose from the component?*/
   return {
