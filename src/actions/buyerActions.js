@@ -1,7 +1,7 @@
-
+import * as types from './actionTypes';
 export function addBuyer(user) {
   return {
-    type: 'ADD_BUYER',
+    type: types.ADD_BUYER,
     user /*this is the same that user: user*/
   };
 }
