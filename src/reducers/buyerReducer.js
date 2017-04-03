@@ -8,6 +8,9 @@ export default function buyerReducer(state = [] /*it starts without buyers*/, ac
         Object.assign({}, action.user) /*it combines empty with the user in a new obj*/
       ];
 
+    case types.LOAD_BUYERS_SUCCESS:
+      return action.users;
+
     default:
       return state;
   }

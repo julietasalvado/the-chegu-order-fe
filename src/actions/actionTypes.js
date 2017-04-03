@@ -1,1 +1,2 @@
 export const ADD_BUYER = 'ADD_BUYER';
+export const LOAD_BUYERS_SUCCESS = 'LOAD_BUYERS_SUCCESS';
