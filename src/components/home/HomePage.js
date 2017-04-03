@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as buyerActions from '../../actions/buyerActions';
 import {bindActionCreators} from 'redux';
+import BuyerList from './BuyerList';
 
 // class HomePage extends React.Component {
 //   render() {
@@ -41,16 +42,14 @@ class HomePage extends React.Component {
     this.props.actions.addBuyer(this.state.user);
   }
 
-  buyerRow(user, index) {
-    return <div key={index}>{user.username}</div>;
-  }
-
   //it should call a child component instead of containing the markup
   render() {
+
+
     return (
       <div className="jumbotron">
         <h1>The Chegu Order</h1>
-        {this.props.users.map(this.buyerRow)}
+        <BuyerList buyers={this.props.users}/>
         <h2>Add a buyer</h2>
         <input
           type="text"
