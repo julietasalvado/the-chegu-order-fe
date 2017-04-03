@@ -1,10 +1,16 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
 
 const BuyerListRow = ({buyer}) => {
-  return(
+  return (
     <tr>
-      <td>{buyer.username}</td>
+      <td>
+        <h4 className="ui image header">
+          <img src={require(`../../assets/images/avatar/avatar1.jpg`)} className="ui mini rounded image"/>
+          <div className="content">
+            {buyer.username}
+          </div>
+        </h4>
+      </td>
     </tr>
   );
 };

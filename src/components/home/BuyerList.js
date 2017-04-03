@@ -6,7 +6,7 @@ import BuyerListRow from './BuyerListRow';
 
 const BuyerList = ({buyers}) => {
   return (
-    <table className="table">
+    <table className="ui very basic collapsing celled table">
       <thead>
         <tr>
           <th>Username</th>
