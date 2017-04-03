@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import * as buyerActions from '../../actions/buyerActions';
 import {bindActionCreators} from 'redux';
 import BuyerList from './BuyerList';
+import CardColumn from '../common/CardColumn';
 
 // class HomePage extends React.Component {
 //   render() {
@@ -44,21 +45,26 @@ class HomePage extends React.Component {
 
   //it should call a child component instead of containing the markup
   render() {
-
-
     return (
-      <div className="jumbotron">
-        <h1>The Chegu Order</h1>
-        <BuyerList buyers={this.props.users}/>
-        <h2>Add a buyer</h2>
-        <input
-          type="text"
-          onChange={this.onUsernameChange}
-          value={this.state.user.username} />
-        <input
-          type="submit"
-          onClick={this.onClickSave}
-          value="Save" />
+      <div className="ui page grid">
+        <div className="two column row">
+          <div className="column">
+            <CardColumn/>
+          </div>
+          <div className="column">
+            <h1>The Chegu Order</h1>
+            <BuyerList buyers={this.props.users}/>
+            <h2>Add a buyer</h2>
+            <input
+              type="text"
+              onChange={this.onUsernameChange}
+              value={this.state.user.username} />
+            <input
+              type="submit"
+              onClick={this.onClickSave}
+              value="Save" />
+          </div>
+        </div>
       </div>
     );
   }
@@ -78,7 +84,7 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-//wraps an action in a call of dispatch so it-s easy to use
+//wraps an action in a call of dispatch so it's easy to use
 function mapDispatchToProps(dispatch) {
   //what actions are available in our components
   return {
