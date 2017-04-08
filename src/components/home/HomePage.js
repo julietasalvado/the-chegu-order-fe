@@ -21,6 +21,7 @@ class HomePage extends React.Component {
 
     //bind statements for functions
     this.updateBuyerState = this.updateBuyerState.bind(this);
+    this.saveBuyers = this.saveBuyers.bind(this);
   }
 
   //--------child functions that are called by 'render'--------
@@ -29,6 +30,11 @@ class HomePage extends React.Component {
     let buyer = this.state.buyer;
     buyer[field] = event.target.value;
     return this.setState({buyer: buyer});
+  }
+
+  saveBuyers(event) {
+    event.preventDefault();
+    this.props.actions.saveBuyer(this.state.buyer);
   }
 
   //it should call a child component instead of containing the markup
@@ -46,6 +52,7 @@ class HomePage extends React.Component {
             buyers={this.state.buyers}
             errors={this.state.errors}
             onChange={this.updateBuyerState}
+            onSave={this.saveBuyers}
           />
           <BuyerList buyers={this.props.users}/>
         </Grid.Column>
