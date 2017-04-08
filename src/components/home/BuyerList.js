@@ -6,17 +6,22 @@ import BuyerListRow from './BuyerListRow';
 
 const BuyerList = ({buyers}) => {
   return (
-    <table className="ui very basic collapsing celled table">
+    <table className="ui structured celled table">
       <thead>
         <tr>
-          <th>Username</th>
+          <th rowSpan="2">Username</th>
+          <th colSpan="2">Selection</th>
+        </tr>
+        <tr>
+          <th>Chicken Breast</th>
+          <th>Chicken Thing</th>
         </tr>
       </thead>
-      <body>
+      <tbody>
       {buyers.map((buyer) =>
         <BuyerListRow key={buyer.id} buyer={buyer}/>
       )}
-      </body>
+      </tbody>
     </table>
   );
 };

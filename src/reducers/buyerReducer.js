@@ -1,6 +1,7 @@
 import * as types from '../actions/actionTypes';
+import initialState from './initialState';
 
-export default function buyerReducer(state = [] /*it starts without buyers*/, action) {
+export default function buyerReducer(state = initialState.buyers /*it starts without buyers*/, action) {
 
   switch(action.type) {
     case types.ADD_BUYER:

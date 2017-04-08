@@ -1,21 +1,11 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as buyerActions from '../../actions/buyerActions';
+import BuyerForm from './BuyerForm';
 import {bindActionCreators} from 'redux';
 import BuyerList from './BuyerList';
 import CardColumn from '../common/CardColumn';
-
-// class HomePage extends React.Component {
-//   render() {
-//     return (
-//       <div className="jumbotron">
-//         <h1>The Chegu Order</h1>
-//       </div>
-//     );
-//   }
-// }
-//
-// export default HomePage;
+import {Grid} from 'semantic-ui-react';
 
 class HomePage extends React.Component {
 
@@ -24,48 +14,42 @@ class HomePage extends React.Component {
     super(props, context);
 
     this.state = {
-      user: { username: ""}
+      user: {username: ""},
+      buyer: Object.assign({}, props.buyer),
+      errors: {}
     };
 
     //bind statements for functions
-    this.onUsernameChange = this.onUsernameChange.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
+    this.updateBuyerState = this.updateBuyerState.bind(this);
   }
 
   //--------child functions that are called by 'render'--------
-  onUsernameChange(event) {
-    const user = this.state.user;
-    user.username = event.target.value;
-    this.setState({ user:user });
-  }
-
-  onClickSave() {
-    this.props.actions.addBuyer(this.state.user);
+  updateBuyerState(event) {
+    const field = event.target.name;
+    let buyer = this.state.buyer;
+    buyer[field] = event.target.value;
+    return this.setState({buyer: buyer});
   }
 
   //it should call a child component instead of containing the markup
   render() {
     return (
-      <div className="ui page grid">
-        <div className="two column row">
-          <div className="column">
-            <CardColumn/>
-          </div>
-          <div className="column">
-            <h1>The Chegu Order</h1>
-            <BuyerList buyers={this.props.users}/>
-            <h2>Add a buyer</h2>
-            <input
-              type="text"
-              onChange={this.onUsernameChange}
-              value={this.state.user.username} />
-            <input
-              type="submit"
-              onClick={this.onClickSave}
-              value="Save" />
-          </div>
-        </div>
-      </div>
+      <Grid columns="equal">
+        <Grid.Column width={6}>
+          <CardColumn/>
+        </Grid.Column>
+        <Grid.Column>
+          <h1>The Chegu Order</h1>
+          <BuyerForm
+            buyer={this.state.buyer}
+            allbuyers={[]}
+            buyers={this.state.buyers}
+            errors={this.state.errors}
+            onChange={this.updateBuyerState}
+          />
+          <BuyerList buyers={this.props.users}/>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
@@ -73,14 +57,28 @@ class HomePage extends React.Component {
 //validations
 HomePage.propTypes = {
   users: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  buyer: PropTypes.object.isRequired
 };
 
 //------redux connect and related functions--------
 function mapStateToProps(state, ownProps) {
   /*what I want to expose from the component?*/
+
+  //empty buyer
+  let buyer = {
+    id: '',
+    username: '',
+    selection: '',
+    shopper: false,
+    gatherer: false,
+    img: '',
+    unpaired: false
+  };
+
   return {
-    users: state.buyers /*the reducer*/
+    users: state.buyers, /*the reducer*/
+    buyer: buyer
   };
 }
 

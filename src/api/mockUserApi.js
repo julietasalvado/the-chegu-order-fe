@@ -6,15 +6,30 @@ import delay from './delay';
 const users = [
   {
     id: '1',
-    username: 'Marilyn Soldan'
+    username: 'Marilyn Soldan',
+    selection: '1',
+    shopper: false,
+    gatherer: false,
+    img: '../../assets/images/avatar/avatar1.jpg',
+    unpaired: true
   },
   {
     id: '2',
-    username: 'Juanito Arcoiris'
+    username: 'Juanito Arcoiris',
+    selection: '1',
+    shopper: true,
+    gatherer: false,
+    img: '../../assets/images/avatar/avatar2.jpg',
+    unpaired: false
   },
   {
     id: '3',
-    username: 'Dalma y Gianina'
+    username: 'Dalma y Gianina',
+    selection: '2',
+    shopper: true,
+    gatherer: true,
+    img: '../../assets/images/avatar/avatar3.jpg',
+    unpaired: false
   }
 ];
 
