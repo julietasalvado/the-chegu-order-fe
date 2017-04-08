@@ -25,8 +25,8 @@ export function updateBuyerSuccess(buyer) {
 export function saveBuyer(buyer) {
   return function (dispatch/*, 'getState' it's useful to get access to the store*/) {
     return buyerApi.saveBuyer(buyer).then( buyer => {
-      //if there and id, the buyer already exist
-      buyer.id ? dispatch(updateBuyerSuccess(buyer)) :
+      /*//if there and id, the buyer already exist
+      buyer.id ? dispatch(updateBuyerSuccess(buyer)) :*/
         dispatch(createBuyerSuccess(buyer));
     }).catch(error => {
       throw(error);
@@ -34,6 +34,10 @@ export function saveBuyer(buyer) {
   };
 }
 
+/**
+ * Loads buyers from the mock api
+ * @returns {Function}
+ */
 export function loadBuyers() {
   return function (dispatch) {
     return buyerApi.getAllBuyers().then((buyers) => {

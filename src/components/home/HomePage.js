@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     super(props, context);
 
     this.state = {
-      user: {username: ""},
+      /*user: {username: ""},*/
       buyer: Object.assign({}, props.buyer),
       errors: {}
     };

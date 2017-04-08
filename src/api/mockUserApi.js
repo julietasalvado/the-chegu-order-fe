@@ -34,8 +34,8 @@ const users = [
 ];
 
 //This would be performed on the server in a real app. Just stubbing in.
-const generateId = (user) => {
-  return user.username.toLowerCase() + '-' + user.username.toLowerCase();
+const generateId = () => {
+  return users.length + 1;
 };
 
 class UserApi {
@@ -64,7 +64,7 @@ class UserApi {
           //Just simulating creation here.
           //The server would generate ids for new authors in a real app.
           //Cloning so copy returned is passed by value rather than by reference.
-          buyer.id = generateId(buyer);
+          buyer.id = generateId();
           users.push(buyer);
         }
 
