@@ -1,3 +1,4 @@
+/*eslint-disable import/default */ //export is not mandatory anymore
 import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
@@ -6,7 +7,7 @@ import {Provider} from 'react-redux'; //attachs the store to the react container
 import routes from './routes';
 import {loadBuyers} from './actions/buyerActions';
 import './styles/styles.css';
-import configureStore from './store/configureStore';
+import configureStore from './store/configureStore.dev';
 
 const store = configureStore();
 //initial buyers
