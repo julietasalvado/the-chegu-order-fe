@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import BuyerList from './BuyerList';
 import CardColumn from '../common/CardColumn';
 import {Grid} from 'semantic-ui-react';
+import toastr from 'toastr';
 
 class HomePage extends React.Component {
 
@@ -37,7 +38,12 @@ class HomePage extends React.Component {
     event.preventDefault();
     this.setState({saving:true});
     this.props.actions.saveBuyer(this.state.buyer)
-      .then( /*when it finished*/() => this.setState({saving:false}));
+      .then( /*when it finished*/() => this.afterSaving());
+  }
+
+  afterSaving() {
+    this.setState({saving:false});
+    toastr.success('You are in the order! Congrats!');
   }
 
   //it should call a child component instead of containing the markup

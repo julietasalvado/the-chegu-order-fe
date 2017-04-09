@@ -8,6 +8,7 @@ import routes from './routes';
 import {loadBuyers} from './actions/buyerActions';
 import './styles/styles.css';
 import configureStore from './store/configureStore.dev';
+import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configureStore();
 //initial buyers
