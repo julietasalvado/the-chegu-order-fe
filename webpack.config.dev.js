@@ -5,6 +5,13 @@
 import webpack from 'webpack';
 import path from 'path';
 
+const GLOBALS = {
+  'process.env': {
+    'NODE_ENV': JSON.stringify('development'),
+    'API_URL': JSON.stringify('http://58e975ec2c97771200be4ee9.mockapi.io/api/v1')
+  }
+};
+
 export default {
   debug: true,
   devtool: 'inline-source-map',
@@ -25,7 +32,8 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin(GLOBALS)
   ],
   module: {
     loaders: [

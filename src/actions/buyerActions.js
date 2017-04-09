@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import buyerApi from '../api/mockUserApi';
+import buyerApi from '../api/userApi';
 
 export function loadBuyersSuccess(users) {
   return {
