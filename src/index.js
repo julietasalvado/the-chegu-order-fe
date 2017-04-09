@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
 import {Router, browserHistory} from 'react-router';
-import {Provider} from 'react-redux'; //attachs the store to the react container components
+import {Provider} from 'react-redux'; //attaches the store to the react container components
 import routes from './routes';
 import {loadBuyers} from './actions/buyerActions';
 import './styles/styles.css';

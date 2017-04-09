@@ -1,3 +1,4 @@
 export default {
-  buyers: []
+  buyers: [],
+  ajaxCallsInProgress: 0
 };

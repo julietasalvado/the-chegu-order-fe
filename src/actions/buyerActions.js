@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import buyerApi from '../api/userApi';
+import {beginAjaxCall} from './ajaxStatusActions';
 
 export function loadBuyersSuccess(users) {
   return {
@@ -24,6 +25,7 @@ export function updateBuyerSuccess(buyer) {
 
 export function saveBuyer(buyer) {
   return function (dispatch/*, 'getState' it's useful to get access to the store*/) {
+    dispatch(beginAjaxCall());
     return buyerApi.saveBuyer(buyer).then( buyer => {
       /*//if there and id, the buyer already exist
       buyer.id ? dispatch(updateBuyerSuccess(buyer)) :*/
@@ -40,6 +42,7 @@ export function saveBuyer(buyer) {
  */
 export function loadBuyers() {
   return function (dispatch) {
+    dispatch(beginAjaxCall());
     return buyerApi.getAllBuyers().then((buyers) => {
       dispatch(loadBuyersSuccess(buyers));
     }).catch(error => {
