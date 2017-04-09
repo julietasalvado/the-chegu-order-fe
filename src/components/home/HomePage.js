@@ -16,7 +16,8 @@ class HomePage extends React.Component {
     this.state = {
       /*user: {username: ""},*/
       buyer: Object.assign({}, props.buyer),
-      errors: {}
+      errors: {},
+      saving: false
     };
 
     //bind statements for functions
@@ -34,7 +35,9 @@ class HomePage extends React.Component {
 
   saveBuyers(event) {
     event.preventDefault();
-    this.props.actions.saveBuyer(this.state.buyer);
+    this.setState({saving:true});
+    this.props.actions.saveBuyer(this.state.buyer)
+      .then( /*when it finished*/() => this.setState({saving:false}));
   }
 
   //it should call a child component instead of containing the markup
@@ -53,6 +56,7 @@ class HomePage extends React.Component {
             errors={this.state.errors}
             onChange={this.updateBuyerState}
             onSave={this.saveBuyers}
+            saving={this.state.saving}
           />
           <BuyerList buyers={this.props.users}/>
         </Grid.Column>

@@ -1,7 +1,7 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 
-const BuyerForm = ({buyer, allBuyers, onSave, onChange, loading, errors}) => {
+const BuyerForm = ({buyer, allBuyers, onSave, onChange, saving, errors}) => {
   return (
     <form>
       <TextInput
@@ -13,8 +13,8 @@ const BuyerForm = ({buyer, allBuyers, onSave, onChange, loading, errors}) => {
 
       <input
         type="submit"
-        disabled={loading}
-        value={loading ? 'Saving...' : 'Save'}
+        disabled={saving}
+        value={saving ? 'Saving...' : 'Save'}
         className="iu button"
         tabIndex="0"
         onClick={onSave}/>
@@ -27,7 +27,7 @@ BuyerForm.propTypes = {
   allBuyers: React.PropTypes.array,
   onSave: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
-  loading: React.PropTypes.bool,
+  saving: React.PropTypes.bool,
   errors: React.PropTypes.object
 };
 
