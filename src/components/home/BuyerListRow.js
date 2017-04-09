@@ -14,13 +14,13 @@ const BuyerListRow = ({buyer}) => {
             </div>
           </h4>
           <div>
-            {buyer.shopper &&
+            {buyer.foodShopper &&
             <a className="ui image label">
               <img src={require(`../../assets/images/shopping_cart.png`)}/>
               Shopper
             </a>
             }
-            {buyer.gatherer &&
+            {buyer.moneyGatherer &&
             <a className="ui image label">
               <img src={require(`../../assets/images/money_bag.png`)}/>
               Gatherer
@@ -30,7 +30,7 @@ const BuyerListRow = ({buyer}) => {
         </div>
       </td>
       <td className="center aligned">
-        {buyer.selection=='1' &&
+        {buyer.selection==1 &&
         <div><i className="large green checkmark icon"></i>
           {buyer.unpaired &&
           <div className="ui icon" data-tooltip="Go and find someone to share your half sandwich with!"
@@ -42,7 +42,7 @@ const BuyerListRow = ({buyer}) => {
         }
       </td>
       <td className="center aligned">
-        {buyer.selection=='2' &&
+        {buyer.selection==2 &&
           <div><i className="large green checkmark icon"></i>
             {buyer.unpaired &&
               <div className="ui icon" data-tooltip="Go and find someone to share your half sandwich with!"

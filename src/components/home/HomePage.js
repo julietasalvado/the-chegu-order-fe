@@ -76,10 +76,10 @@ function mapStateToProps(state, ownProps) {
   let buyer = {
     id: '',
     username: '',
-    selection: '',
-    shopper: false,
-    gatherer: false,
-    img: '',
+    selection: 0,
+    foodShopper: false,
+    moneyGatherer: false,
+    userUrl: '',
     unpaired: false
   };
 
