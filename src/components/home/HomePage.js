@@ -38,7 +38,11 @@ class HomePage extends React.Component {
     event.preventDefault();
     this.setState({saving:true});
     this.props.actions.saveBuyer(this.state.buyer)
-      .then( /*when it finished*/() => this.afterSaving());
+      .then( /*when it finished*/() => this.afterSaving())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({saving: false});
+      });
   }
 
   afterSaving() {

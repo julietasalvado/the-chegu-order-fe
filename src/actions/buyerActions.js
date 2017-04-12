@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import buyerApi from '../api/userApi';
-import {beginAjaxCall} from './ajaxStatusActions';
+import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function loadBuyersSuccess(users) {
   return {
@@ -31,6 +31,7 @@ export function saveBuyer(buyer) {
       buyer.id ? dispatch(updateBuyerSuccess(buyer)) :*/
         dispatch(createBuyerSuccess(buyer));
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
   };
@@ -46,6 +47,7 @@ export function loadBuyers() {
     return buyerApi.getAllBuyers().then((buyers) => {
       dispatch(loadBuyersSuccess(buyers));
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw (error);
     });
   };
