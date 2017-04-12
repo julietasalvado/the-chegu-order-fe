@@ -1,7 +1,7 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 
-const BuyerForm = ({buyer, allBuyers, onSave, onChange, saving, errors}) => {
+const BuyerForm = ({buyer, onSave, onChange, saving, errors}) => {
   return (
     <form>
       <TextInput

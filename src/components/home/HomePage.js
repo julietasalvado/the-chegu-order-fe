@@ -60,8 +60,7 @@ class HomePage extends React.Component {
         <Grid.Column>
           <h1>The Chegu Order</h1>
           <BuyerForm
-            buyer={this.state.buyer}
-            allbuyers={[]}
+            buyer={this.state.buyers}
             buyers={this.state.buyers}
             errors={this.state.errors}
             onChange={this.updateBuyerState}
