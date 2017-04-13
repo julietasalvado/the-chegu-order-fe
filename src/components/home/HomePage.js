@@ -100,17 +100,17 @@ function mapStateToProps(state, ownProps) {
   };
 
   //empty order
-  let order = {
-    place: '',
-    date: '',
-    foodShopper: '',
-    moneyGatherer: '',
-    close: true
-  };
+  // let order = {
+  //   place: '',
+  //   date: '',
+  //   foodShopper: '',
+  //   moneyGatherer: '',
+  //   close: true
+  // };
 
   return {
     users: state.buyers, /*the reducer*/
-    order: order,
+    order: state.order,
     buyer: buyer
   };
 }

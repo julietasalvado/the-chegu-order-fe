@@ -1,5 +1,11 @@
 export default {
   buyers: [],
-  order: '',
+  order: {
+    place: '',
+    date: '',
+    foodShopper: '',
+    moneyGatherer: '',
+    close: true
+  },
   ajaxCallsInProgress: 0
 };

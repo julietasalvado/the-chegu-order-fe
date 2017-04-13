@@ -19,7 +19,19 @@ class OrderApi {
     };
 
     return fetch(order_url + '/last', obj).then(response => {
+      if (response.status == 204) {
+        //empty order
+        let order = {
+          place: '',
+          date: '',
+          foodShopper: '',
+          moneyGatherer: '',
+          close: true
+        };
+        return order;
+      }
       return response.json();
+
     }).catch(error => {
       return error;
     });
