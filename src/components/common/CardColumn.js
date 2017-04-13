@@ -4,10 +4,10 @@ import CardCurrentOrder from './CardCurrentOrder';
 
 const src = '/assets/images/wireframe/image.png';
 
-const CardColumn = () => (
+const CardColumn = (order) => (
   <Card.Group itemsPerRow={1}>
     <Card raised image={src} />
-    <CardCurrentOrder/>
+    <CardCurrentOrder order={order}/>
   </Card.Group>
 );
 

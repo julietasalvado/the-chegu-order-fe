@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as buyerActions from '../../actions/buyerActions';
+import * as orderActions from '../../actions/orderActions';
 import BuyerForm from './BuyerForm';
 import {bindActionCreators} from 'redux';
 import BuyerList from './BuyerList';
@@ -15,10 +16,11 @@ class HomePage extends React.Component {
     super(props, context);
 
     this.state = {
-      /*user: {username: ""},*/
+      user: {username: ""},
       buyer: Object.assign({}, props.buyer),
       errors: {},
-      saving: false
+      saving: false,
+      order: Object.assign({}, props.order)
     };
 
     //bind statements for functions
@@ -55,12 +57,12 @@ class HomePage extends React.Component {
     return (
       <Grid columns="equal">
         <Grid.Column width={6}>
-          <CardColumn/>
+          <CardColumn order={this.state.order}/>
         </Grid.Column>
         <Grid.Column>
           <h1>The Chegu Order</h1>
           <BuyerForm
-            buyer={this.state.buyers}
+            buyer={this.state.buyer}
             buyers={this.state.buyers}
             errors={this.state.errors}
             onChange={this.updateBuyerState}
@@ -78,7 +80,8 @@ class HomePage extends React.Component {
 HomePage.propTypes = {
   users: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  buyer: PropTypes.object.isRequired
+  buyer: PropTypes.object.isRequired,
+  order: PropTypes.object.isRequired
 };
 
 //------redux connect and related functions--------
@@ -96,8 +99,18 @@ function mapStateToProps(state, ownProps) {
     unpaired: false
   };
 
+  //empty order
+  let order = {
+    place: '',
+    date: '',
+    foodShopper: '',
+    moneyGatherer: '',
+    close: true
+  };
+
   return {
     users: state.buyers, /*the reducer*/
+    order: order,
     buyer: buyer
   };
 }
@@ -106,7 +119,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   //what actions are available in our components
   return {
-    actions: bindActionCreators(buyerActions, dispatch)
+    actions: bindActionCreators(buyerActions, orderActions, dispatch)
   };
 }
 

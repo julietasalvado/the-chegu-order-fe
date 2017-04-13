@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import ListCurrentOrder from './ListCurrentOrder';
 
-const CardCurrentOrder = () => (
+const CardCurrentOrder = (order) => (
   <Card>
     <Card.Content header="Current Order" />
     <Card.Content extra>

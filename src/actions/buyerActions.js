@@ -38,7 +38,7 @@ export function saveBuyer(buyer) {
 }
 
 /**
- * Loads buyers from the mock api
+ * Loads buyers from the api
  * @returns {Function}
  */
 export function loadBuyers() {
