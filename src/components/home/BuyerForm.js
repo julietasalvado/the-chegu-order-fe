@@ -9,7 +9,9 @@ const BuyerForm = ({buyer, onSave, onChange, saving, errors}) => {
         label="username"
         value={buyer.username}
         onChange={onChange}
-        error={errors.title}/>
+        error={errors.title}
+        placeholder="Username..."
+      />
 
       <input
         type="submit"
@@ -24,7 +26,6 @@ const BuyerForm = ({buyer, onSave, onChange, saving, errors}) => {
 
 BuyerForm.propTypes = {
   buyer: React.PropTypes.object.isRequired,
-  allBuyers: React.PropTypes.array,
   onSave: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
   saving: React.PropTypes.bool,
