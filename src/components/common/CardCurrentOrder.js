@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card} from 'semantic-ui-react';
 import ListCurrentOrder from './ListCurrentOrder';
-import NewOrder from '../order/NewOrder'
+import NewOrder from '../order/NewOrder';
 
 const CardCurrentOrder = (order) => {
   return(

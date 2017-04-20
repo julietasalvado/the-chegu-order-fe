@@ -57,13 +57,15 @@ class HomePage extends React.Component {
     return (
       <Grid columns="equal">
         <Grid.Column width={6}>
-          <CardColumn order={this.state.order}/>
+          <CardColumn
+            order={this.state.order}
+            errors={this.state.errors}
+          />
         </Grid.Column>
         <Grid.Column>
           <h1>The Chegu Order</h1>
           <BuyerForm
             buyer={this.state.buyer}
-            buyers={this.state.buyers}
             errors={this.state.errors}
             onChange={this.updateBuyerState}
             onSave={this.saveBuyers}
